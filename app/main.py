@@ -4,19 +4,28 @@ from app.crawler.crawler import get_urls_from_sitemap, fetch_mdx_from_url
 from app.rag.rag import index_pages
 from app.agent.agent import answer
 from fastapi.middleware.cors import CORSMiddleware
+import os
 
-app = FastAPI()
+app = FastAPI(title="AI Book RAG Chatbot API", version="1.0.0")
+
+# Configure CORS - Update origins for production
+allowed_origins = os.getenv("ALLOWED_ORIGINS", "*").split(",")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allow all origins (for development)
+    allow_origins=allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 @app.get("/")
 async def root():
-    return {"message": "RAG Chatbot API is running"}
+    return {"message": "RAG Chatbot API is running", "status": "healthy"}
+
+@app.get("/health")
+async def health():
+    return {"status": "healthy"}
 
 @app.post("/build-index")
 async def build_index():
