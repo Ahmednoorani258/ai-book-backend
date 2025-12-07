@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+requests
+beautifulsoup4
+markdown
+qdrant-client
+sentence-transformers
+python-dotenv
+bs4
+openai
+openai-agents
