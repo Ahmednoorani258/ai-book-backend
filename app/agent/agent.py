@@ -5,6 +5,7 @@ from .setupconfig import config
 agent = Agent(
     name="BookAssistant",
     instructions=(
+        "Greet the user and assist them with their questions about the book."
         "You answer questions ONLY using context from tools. "
         "Call rag_search when user asks normal questions. "
         # "Call use_selected_text when selected text is provided. "
