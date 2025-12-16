@@ -1,6 +1,6 @@
 ---
 title: Book Chatbot Backend
-emoji: 📚
+emoji: "📚"
 colorFrom: purple
 colorTo: pink
 sdk: docker
